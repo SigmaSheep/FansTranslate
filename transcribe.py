@@ -94,4 +94,4 @@ if __name__ == '__main__':
     if args.path.startswith('gs://'):
         transcribe_gcs(args.path)
     else:
-        transcribe_fi
+        transcribe_file(args.path)
