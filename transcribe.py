@@ -75,7 +75,8 @@ def transcribe_gcs(gcs_uri):
         language_code='en-US')
     # [END speech_python_migration_config_gcs]
 
-    response = client.recognize(config, audio)
+    operation = client.long_running_recognize(config, audio)
+    response = operation.result(timeout=90)
     # Each result is for a consecutive portion of the audio. Iterate through
     # them to get the transcripts for the entire audio file.
     for result in response.results:
